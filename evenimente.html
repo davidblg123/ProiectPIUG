@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="ro" data-theme="dark" data-accent="green">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Grupuri și Evenimente — ShowUp2Move</title>
+  <meta name="description" content="Generează grupuri sportive spontane, caută evenimente din apropiere și creează-l pe al tău.">
+  <meta name="theme-color" content="#0E0A18">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop stop-color='%232EE59D'/%3E%3Cstop offset='1' stop-color='%238B5CF6'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='32' height='32' rx='9' fill='url(%23g)'/%3E%3Cpath d='M8 21l5-5 3 3 7-8' fill='none' stroke='%230E0A18' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3Ccircle cx='23.5' cy='7.5' r='2.4' fill='%230E0A18'/%3E%3C/svg%3E">
+
+  <!-- Google Analytics (gtag.js)
+       Înlocuiește G-XXXXXXXXXX cu Measurement ID-ul real (GA4 → Admin → Data streams → Web),
+       în AMBELE locuri de mai jos, pe toate cele 5 pagini. -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX');
+  </script>
+
+  <!-- Aplică tema salvată înainte de randare (evită „flash”-ul) -->
+  <script>(function(){try{var p=JSON.parse(localStorage.getItem('su2m:prefs'))||{},d=document.documentElement;d.dataset.theme=p.theme||'dark';d.dataset.accent=p.accent||'green';if(p.scale)d.style.setProperty('--font-scale',p.scale);}catch(e){}})();</script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/pages.css">
+
+  <script src="js/core/utils.js" defer></script>
+  <script src="js/core/storage.js" defer></script>
+  <script src="js/core/analytics.js" defer></script>
+  <script src="js/core/data.js" defer></script>
+  <script src="js/core/theme.js" defer></script>
+  <script src="js/core/nav.js" defer></script>
+  <script src="js/core/scroll.js" defer></script>
+  <script src="js/core/help.js" defer></script>
+  <script src="js/core/chatbot.js" defer></script>
+  <script src="js/pages/events.js" defer></script>
+  <script src="js/main.js" defer></script>
+</head>
+<body data-page="events">
+  <a class="skip-link" href="#main">Sari la conținut</a>
+
+  <header class="nav" id="top">
+    <div class="container nav__inner">
+      <a class="brand" href="index.html" aria-label="ShowUp2Move, pagina de start">
+        <span class="brand__mark" data-icon="logo"></span>
+        <span class="brand__name">ShowUp<b>2</b>Move</span>
+      </a>
+      <nav class="nav__menu" id="nav-menu" aria-label="Navigare principală">
+        <a href="index.html" data-nav="home">Acasă</a>
+        <a href="evenimente.html" data-nav="events">Grupuri &amp; Evenimente</a>
+        <a href="galerie.html" data-nav="gallery">Galerie</a>
+        <a href="componente.html" data-nav="components">Componente &amp; Ghid</a>
+        <a href="contact.html" data-nav="contact">Contact</a>
+      </nav>
+      <div class="nav__tools">
+        <button class="icon-btn theme-btn" type="button" data-action="theme-toggle" aria-label="Comută tema"><span class="ic-sun" data-icon="sun"></span><span class="ic-moon" data-icon="moon"></span></button>
+        <button class="icon-btn" type="button" data-action="prefs-open" aria-label="Personalizare: temă, accent, mărime text" aria-haspopup="dialog"><span data-icon="sliders"></span></button>
+      </div>
+      <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="nav-menu" aria-label="Deschide meniul"><span></span><span></span><span></span></button>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="page-hero">
+      <div class="container">
+        <span class="page-hero__deco" aria-hidden="true">PLAY</span>
+        <span class="eyebrow">Grupuri &amp; Evenimente</span>
+        <h1>Găsește-ți <span class="grad-text">echipa de azi.</span></h1>
+        <p class="lead">Generează grupuri spontane din oamenii disponibili, caută evenimente din apropiere sau creează-l pe al tău.</p>
+        <nav class="chips" aria-label="Secțiunile paginii">
+          <a class="chip" href="#grupuri" style="--c:var(--violet)">Grupuri spontane</a>
+          <a class="chip" href="#cauta">Caută evenimente</a>
+          <a class="chip" href="#creeaza" style="--c:var(--lime)">Creează eveniment</a>
+        </nav>
+      </div>
+    </section>
+
+    <section class="section" id="grupuri">
+      <div class="container">
+        <div class="section__head">
+          <span class="eyebrow eyebrow--social">Generator</span>
+          <h2>Grupuri spontane</h2>
+          <p class="lead">Grupăm oamenii care au răspuns „Da” azi, în intervalul ideal pentru fiecare sport, alegem căpitanul și propunem terenul cu bugetul pe persoană.</p>
+        </div>
+        <div id="g-notice"></div>
+        <form class="gen" id="gen-form">
+          <div class="field"><label for="g-sport">Sport</label><select id="g-sport"></select></div>
+          <div class="field"><label for="g-zone">Zona ta</label><select id="g-zone"></select></div>
+          <button class="btn btn--social" type="submit"><span data-icon="sparkle"></span>Generează grupuri</button>
+        </form>
+        <p class="results-meta" id="g-meta" aria-live="polite"></p>
+        <div class="group-grid" id="g-grid"></div>
+      </div>
+    </section>
+
+    <section class="section" id="cauta">
+      <div class="container">
+        <div class="section__head">
+          <span class="eyebrow">Căutare</span>
+          <h2>Evenimente din apropiere</h2>
+        </div>
+        <div class="ev-layout">
+          <form class="filters card" id="filters" role="search" aria-label="Filtrează evenimentele">
+            <div class="field">
+              <label for="f-q">Caută</label>
+              <div class="search__box"><span data-icon="search"></span><input id="f-q" type="search" placeholder="ex. campus, seară, tenis…" autocomplete="off"></div>
+            </div>
+            <div class="field"><label for="f-sport">Sport</label><select id="f-sport"></select></div>
+            <div class="field"><label for="f-zone">Zonă</label><select id="f-zone"></select></div>
+            <div class="field"><label for="f-level">Nivel</label><select id="f-level"></select></div>
+            <div class="field">
+              <label for="f-size">Mărimea grupului</label>
+              <select id="f-size">
+                <option value="">Orice mărime</option>
+                <option value="mic">Mic (2–4)</option>
+                <option value="mediu">Mediu (5–10)</option>
+                <option value="mare">Mare (11+)</option>
+              </select>
+            </div>
+            <button class="btn btn--ghost btn--sm" type="reset">Resetează filtrele</button>
+          </form>
+          <div>
+            <div class="results-meta"><span id="ev-count" aria-live="polite"></span><span>Ordonate după dată</span></div>
+            <div class="event-grid" id="ev-grid"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="creeaza">
+      <div class="container create">
+        <div>
+          <span class="eyebrow">Organizează</span>
+          <h2>Creează un eveniment</h2>
+          <p class="lead">Ai un teren în minte și o oră liberă? Publică evenimentul, iar oamenii disponibili îl văd imediat.</p>
+          <ul class="check-list">
+            <li><span data-icon="check"></span>Intervalul de jucători se ajustează după sport.</li>
+            <li><span data-icon="check"></span>Vezi doar locațiile care au sportul ales în zona ta.</li>
+            <li><span data-icon="check"></span>Tu devii automat căpitanul grupului.</li>
+          </ul>
+        </div>
+        <form class="card form-grid form-grid--2" id="create-form" novalidate>
+          <div class="field field--full">
+            <label for="c-title">Titlu <span class="req">*</span></label>
+            <input id="c-title" name="title" maxlength="60" placeholder="ex. Fotbal după birou" aria-describedby="c-title-err">
+            <p class="field__error" id="c-title-err"></p>
+          </div>
+          <div class="field">
+            <label for="c-sport">Sport <span class="req">*</span></label>
+            <select id="c-sport" name="sport" aria-describedby="c-sport-err"></select>
+            <p class="field__error" id="c-sport-err"></p>
+          </div>
+          <div class="field">
+            <label for="c-zone">Zonă <span class="req">*</span></label>
+            <select id="c-zone" name="zone" aria-describedby="c-zone-err"></select>
+            <p class="field__error" id="c-zone-err"></p>
+          </div>
+          <div class="field field--full">
+            <label for="c-loc">Locație <span class="req">*</span></label>
+            <select id="c-loc" name="loc" aria-describedby="c-loc-hint c-loc-err"></select>
+            <p class="field__hint" id="c-loc-hint"></p>
+            <p class="field__error" id="c-loc-err"></p>
+          </div>
+          <div class="field">
+            <label for="c-date">Data <span class="req">*</span></label>
+            <input id="c-date" name="date" type="date" aria-describedby="c-date-err">
+            <p class="field__error" id="c-date-err"></p>
+          </div>
+          <div class="field">
+            <label for="c-time">Ora <span class="req">*</span></label>
+            <input id="c-time" name="time" type="time" step="900" aria-describedby="c-time-err">
+            <p class="field__error" id="c-time-err"></p>
+          </div>
+          <div class="field">
+            <label for="c-max">Număr maxim de jucători <span class="req">*</span></label>
+            <input id="c-max" name="max" type="number" inputmode="numeric" aria-describedby="c-max-hint c-max-err">
+            <p class="field__hint" id="c-max-hint">Alege întâi sportul.</p>
+            <p class="field__error" id="c-max-err"></p>
+          </div>
+          <div class="field">
+            <label for="c-level">Nivel <span class="req">*</span></label>
+            <select id="c-level" name="level" aria-describedby="c-level-err"></select>
+            <p class="field__error" id="c-level-err"></p>
+          </div>
+          <div class="field--full"><button class="btn btn--primary btn--block" type="submit"><span data-icon="plus"></span>Publică evenimentul</button></div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__grid">
+      <div class="footer__brand">
+        <a class="brand" href="index.html"><span class="brand__mark" data-icon="logo"></span><span class="brand__name">ShowUp<b>2</b>Move</span></a>
+        <p>Sport spontan cu oameni din apropiere. Răspunzi azi, joci diseară.</p>
+      </div>
+      <nav aria-label="Linkuri în subsol">
+        <h3>Explorează</h3>
+        <ul>
+          <li><a href="index.html">Acasă</a></li>
+          <li><a href="evenimente.html">Grupuri &amp; Evenimente</a></li>
+          <li><a href="galerie.html">Galerie</a></li>
+          <li><a href="componente.html">Componente &amp; Ghid</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+      <div>
+        <h3>Comunitate</h3>
+        <ul class="social">
+          <li><a href="https://www.instagram.com/" target="_blank" rel="noopener" aria-label="ShowUp2Move pe Instagram"><span data-icon="instagram"></span></a></li>
+          <li><a href="https://www.facebook.com/" target="_blank" rel="noopener" aria-label="ShowUp2Move pe Facebook"><span data-icon="facebook"></span></a></li>
+          <li><a href="https://www.tiktok.com/" target="_blank" rel="noopener" aria-label="ShowUp2Move pe TikTok"><span data-icon="tiktok"></span></a></li>
+          <li><a href="https://www.youtube.com/" target="_blank" rel="noopener" aria-label="ShowUp2Move pe YouTube"><span data-icon="youtube"></span></a></li>
+          <li><a href="https://x.com/" target="_blank" rel="noopener" aria-label="ShowUp2Move pe X"><span data-icon="x"></span></a></li>
+        </ul>
+        <p class="footer__tag">#ShowUpToday</p>
+      </div>
+    </div>
+    <div class="container footer__bottom">
+      <p>© <span data-year></span> ShowUp2Move · Proiect PIUG, prototip front-end.</p>
+      <a href="#top">Înapoi sus ↑</a>
+    </div>
+  </footer>
+</body>
+</html>

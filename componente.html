@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="ro" data-theme="dark" data-accent="green">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Componente și Ghid — ShowUp2Move</title>
+  <meta name="description" content="Componentele platformei ShowUp2Move, sporturile suportate și ghidul rapid.">
+  <meta name="theme-color" content="#0E0A18">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop stop-color='%232EE59D'/%3E%3Cstop offset='1' stop-color='%238B5CF6'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='32' height='32' rx='9' fill='url(%23g)'/%3E%3Cpath d='M8 21l5-5 3 3 7-8' fill='none' stroke='%230E0A18' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3Ccircle cx='23.5' cy='7.5' r='2.4' fill='%230E0A18'/%3E%3C/svg%3E">
+
+  <!-- Google Analytics (gtag.js)
+       Înlocuiește G-XXXXXXXXXX cu Measurement ID-ul real (GA4 → Admin → Data streams → Web),
+       în AMBELE locuri de mai jos, pe toate cele 5 pagini. -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX');
+  </script>
+
+  <!-- Aplică tema salvată înainte de randare (evită „flash”-ul) -->
+  <script>(function(){try{var p=JSON.parse(localStorage.getItem('su2m:prefs'))||{},d=document.documentElement;d.dataset.theme=p.theme||'dark';d.dataset.accent=p.accent||'green';if(p.scale)d.style.setProperty('--font-scale',p.scale);}catch(e){}})();</script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/pages.css">
+
+  <script src="js/core/utils.js" defer></script>
+  <script src="js/core/storage.js" defer></script>
+  <script src="js/core/analytics.js" defer></script>
+  <script src="js/core/data.js" defer></script>
+  <script src="js/core/theme.js" defer></script>
+  <script src="js/core/nav.js" defer></script>
+  <script src="js/core/scroll.js" defer></script>
+  <script src="js/core/help.js" defer></script>
+  <script src="js/core/chatbot.js" defer></script>
+  <script src="js/pages/components.js" defer></script>
+  <script src="js/main.js" defer></script>
+</head>
+<body data-page="components">
+  <a class="skip-link" href="#main">Sari la conținut</a>
+
+  <header class="nav" id="top">
+    <div class="container nav__inner">
+      <a class="brand" href="index.html" aria-label="ShowUp2Move, pagina de start">
+        <span class="brand__mark" data-icon="logo"></span>
+        <span class="brand__name">ShowUp<b>2</b>Move</span>
+      </a>
+      <nav class="nav__menu" id="nav-menu" aria-label="Navigare principală">
+        <a href="index.html" data-nav="home">Acasă</a>
+        <a href="evenimente.html" data-nav="events">Grupuri &amp; Evenimente</a>
+        <a href="galerie.html" data-nav="gallery">Galerie</a>
+        <a href="componente.html" data-nav="components">Componente &amp; Ghid</a>
+        <a href="contact.html" data-nav="contact">Contact</a>
+      </nav>
+      <div class="nav__tools">
+        <button class="icon-btn theme-btn" type="button" data-action="theme-toggle" aria-label="Comută tema"><span class="ic-sun" data-icon="sun"></span><span class="ic-moon" data-icon="moon"></span></button>
+        <button class="icon-btn" type="button" data-action="prefs-open" aria-label="Personalizare: temă, accent, mărime text" aria-haspopup="dialog"><span data-icon="sliders"></span></button>
+      </div>
+      <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="nav-menu" aria-label="Deschide meniul"><span></span><span></span><span></span></button>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="page-hero">
+      <div class="container">
+        <span class="page-hero__deco" aria-hidden="true">KIT</span>
+        <span class="eyebrow">Componente &amp; Ghid</span>
+        <h1>Ce e sub <span class="grad-text">capotă.</span></h1>
+        <p class="lead">Toate componentele platformei, sporturile suportate și un ghid rapid pentru primul tău meci.</p>
+      </div>
+    </section>
+
+    <section class="section--tight" id="componente">
+      <div class="container">
+        <div class="table-tools">
+          <div class="field">
+            <label for="t-q">Caută în componente</label>
+            <div class="search__box"><span data-icon="search"></span><input id="t-q" type="search" placeholder="ex. căpitan, validare, galerie…" autocomplete="off"></div>
+          </div>
+          <div class="chips" id="t-status" role="group" aria-label="Filtrează după status">
+            <button class="chip" type="button" data-status="" aria-pressed="true">Toate</button>
+            <button class="chip" type="button" data-status="ok" style="--c:var(--green)" aria-pressed="false">Funcțional</button>
+            <button class="chip" type="button" data-status="sim" style="--c:var(--violet)" aria-pressed="false">Simulat</button>
+            <button class="chip" type="button" data-status="bonus" style="--c:var(--sport-baschet)" aria-pressed="false">Bonus</button>
+          </div>
+        </div>
+        <p class="results-meta" id="t-count" aria-live="polite"></p>
+        <div class="table-wrap">
+          <table class="table" id="comp-table">
+            <caption>Componentele platformei ShowUp2Move</caption>
+            <thead><tr><th scope="col">Componentă</th><th scope="col">Rol</th><th scope="col">Unde o găsești</th><th scope="col">Status</th><th scope="col">Detalii</th></tr></thead>
+            <tbody>
+              <tr data-status="ok"><th scope="row">ShowUpToday?</th><td>Colectează disponibilitatea zilnică (Da/Nu)</td><td>Acasă, Evenimente</td><td><span class="status status--ok">Funcțional</span></td><td class="muted">Răspuns salvat local, expiră la miezul nopții</td></tr>
+              <tr data-status="sim"><th scope="row">Generator de grupuri</th><td>Formează grupuri în intervalul ideal pentru fiecare sport</td><td>Evenimente</td><td><span class="status status--sim">Simulat</span></td><td class="muted">80 de utilizatori mock, disponibilitatea se schimbă zilnic</td></tr>
+              <tr data-status="sim"><th scope="row">Desemnare căpitan</th><td>Alege liderul grupului după scorul de încredere</td><td>Evenimente</td><td><span class="status status--sim">Simulat</span></td><td class="muted">Membrul cu cel mai mare scor; jucătorii avansați au prioritate</td></tr>
+              <tr data-status="ok"><th scope="row">Sugestii locație &amp; buget</th><td>Propune terenul potrivit și costul pe persoană</td><td>Evenimente</td><td><span class="status status--ok">Funcțional</span></td><td class="muted">Preț/oră × durată ÷ numărul de membri</td></tr>
+              <tr data-status="ok"><th scope="row">Căutare &amp; filtre</th><td>Filtrare live după text, sport, zonă, nivel și mărime</td><td>Evenimente, Componente</td><td><span class="status status--ok">Funcțional</span></td><td class="muted">Ignoră diacriticele, mesaj clar când nu există rezultate</td></tr>
+              <tr data-status="ok"><th scope="row">Creare eveniment</th><td>Formular validat pentru evenimente noi</td><td>Evenimente</td><td><span class="status status--ok">Funcțional</span></td><td class="muted">Salvat în localStorage, poate fi șters</td></tr>
+              <tr data-status="ok"><th scope="row">Profil adaptiv</th><td>Adaptează textele, imaginile și recomandările</td><td>Acasă</td><td><span class="status status--ok">Funcțional</span></td><td class="muted">3 niveluri × 5 sporturi</td></tr>
+              <tr data-status="ok"><th scope="row">Galerie &amp; lightbox</th><td>Vizualizare mărită cu Previous / Next</td><td>Galerie</td><td><span class="status status--ok">Funcțional</span></td><td class="muted">Tastatură (← → Esc) și swipe pe telefon</td></tr>
+              <tr data-status="ok"><th scope="row">Formular de contact</th><td>Trimite mesaje către echipă</td><td>Contact</td><td><span class="status status--ok">Funcțional</span></td><td class="muted">Validare nume, email, telefon RO, mesaj</td></tr>
+              <tr data-status="ok"><th scope="row">Video</th><td>Clip motivațional integrat</td><td>Acasă</td><td><span class="status status--ok">Funcțional</span></td><td class="muted">Embed YouTube</td></tr>
+              <tr data-status="ok"><th scope="row">Social media</th><td>Legătura cu rețelele comunității</td><td>Footer, Contact</td><td><span class="status status--ok">Funcțional</span></td><td class="muted">Instagram, Facebook, TikTok, YouTube, X</td></tr>
+              <tr data-status="ok"><th scope="row">Personalizare temă</th><td>Light / Dark, accent, mărime text</td><td>Toate paginile</td><td><span class="status status--ok">Funcțional</span></td><td class="muted">Preferințe salvate în localStorage</td></tr>
+              <tr data-status="ok"><th scope="row">Navigare UP / DOWN</th><td>Salt rapid la începutul sau finalul paginii</td><td>Toate paginile</td><td><span class="status status--ok">Funcțional</span></td><td class="muted">Butoanele apar doar când sunt utile</td></tr>
+              <tr data-status="ok"><th scope="row">Ghid Help</th><td>Ajutor rapid, adaptat paginii</td><td>Toate paginile</td><td><span class="status status--ok">Funcțional</span></td><td class="muted">Buton „?” sau tasta ?</td></tr>
+              <tr data-status="sim"><th scope="row">Google Analytics</th><td>Măsoară vizitele și acțiunile cheie</td><td>Toate paginile</td><td><span class="status status--sim">Necesită ID</span></td><td class="muted">gtag.js cu G-XXXXXXXXXX și evenimente custom</td></tr>
+              <tr data-status="bonus"><th scope="row">Asistent Mova</th><td>Răspunde la întrebări despre platformă</td><td>Toate paginile</td><td><span class="status status--bonus">Bonus</span></td><td class="muted">Chatbot pe bază de reguli</td></tr>
+              <tr class="empty-row" hidden><td colspan="5" class="muted">Nicio componentă nu se potrivește căutării. Încearcă alt termen.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="sporturi">
+      <div class="container">
+        <div class="section__head">
+          <span class="eyebrow eyebrow--social">Sporturi</span>
+          <h2>Mărimea ideală a grupului</h2>
+          <p class="lead">Generatorul de grupuri respectă aceste intervale. Sub minim, grupul rămâne „în formare”.</p>
+        </div>
+        <div class="table-wrap">
+          <table class="table">
+            <caption>Sporturile suportate</caption>
+            <thead><tr><th scope="col">Sport</th><th scope="col">Jucători</th><th scope="col">Durată</th><th scope="col">Echipament</th><th scope="col">Locații</th><th scope="col">Cost minim / pers.</th></tr></thead>
+            <tbody id="sports-body"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="ghid">
+      <div class="container">
+        <div class="section__head">
+          <span class="eyebrow">Ghid</span>
+          <h2>Primul tău meci, pas cu pas.</h2>
+        </div>
+        <ol class="guide-steps">
+          <li><span class="ic-box" style="--c:var(--green)"><span data-icon="target"></span></span><h3>Setează profilul</h3><p>Pe Acasă, alege nivelul și sportul preferat la „Pentru cine e azi?”.</p></li>
+          <li><span class="ic-box" style="--c:var(--violet)"><span data-icon="bolt"></span></span><h3>Spune Da</h3><p>Răspunde la ShowUpToday?. Fără Da, nu apari în grupurile zilei.</p></li>
+          <li><span class="ic-box" style="--c:var(--lime)"><span data-icon="users"></span></span><h3>Confirmă grupul</h3><p>În Grupuri &amp; Evenimente vezi grupul tău, căpitanul, terenul și bugetul.</p></li>
+          <li><span class="ic-box" style="--c:var(--sport-alergare)"><span data-icon="calendar"></span></span><h3>Sau organizează</h3><p>Creează un eveniment propriu și devii căpitan.</p></li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="section" id="faq">
+      <div class="container">
+        <div class="section__head"><span class="eyebrow eyebrow--social">Întrebări frecvente</span><h2>Pe scurt.</h2></div>
+        <div class="faq">
+          <details><summary>Ce se întâmplă dacă răspund „Nu”?</summary><p>Nimic grav: nu apari în grupurile de azi. Mâine primești din nou întrebarea. Te poți răzgândi oricând în aceeași zi.</p></details>
+          <details><summary>Cum e ales căpitanul?</summary><p>Căpitanul e membrul cu cel mai mare scor de încredere. Scorul crește când îți confirmi prezența și apari la meci. Jucătorii avansați pornesc cu un scor mai mare.</p></details>
+          <details><summary>Ce înseamnă un grup „în formare”?</summary><p>Sunt prea puțini oameni disponibili pentru minimul sportului (de ex. 10 la fotbal). Grupul se completează pe măsură ce mai mulți răspund Da.</p></details>
+          <details><summary>Cum se calculează bugetul?</summary><p>Prețul terenului pe oră × durata meciului ÷ numărul de jucători. Alergarea pe faleză sau în parc e gratuită.</p></details>
+          <details><summary>Unde sunt salvate datele mele?</summary><p>Doar în browserul tău (localStorage): răspunsul ShowUpToday, profilul, evenimentele create și preferințele de temă. Prototipul nu are server.</p></details>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__grid">
+      <div class="footer__brand">
+        <a class="brand" href="index.html"><span class="brand__mark" data-icon="logo"></span><span class="brand__name">ShowUp<b>2</b>Move</span></a>
+        <p>Sport spontan cu oameni din apropiere. Răspunzi azi, joci diseară.</p>
+      </div>
+      <nav aria-label="Linkuri în subsol">
+        <h3>Explorează</h3>
+        <ul>
+          <li><a href="index.html">Acasă</a></li>
+          <li><a href="evenimente.html">Grupuri &amp; Evenimente</a></li>
+          <li><a href="galerie.html">Galerie</a></li>
+          <li><a href="componente.html">Componente &amp; Ghid</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+      <div>
+        <h3>Comunitate</h3>
+        <ul class="social">
+          <li><a href="https://www.instagram.com/" target="_blank" rel="noopener" aria-label="ShowUp2Move pe Instagram"><span data-icon="instagram"></span></a></li>
+          <li><a href="https://www.facebook.com/" target="_blank" rel="noopener" aria-label="ShowUp2Move pe Facebook"><span data-icon="facebook"></span></a></li>
+          <li><a href="https://www.tiktok.com/" target="_blank" rel="noopener" aria-label="ShowUp2Move pe TikTok"><span data-icon="tiktok"></span></a></li>
+          <li><a href="https://www.youtube.com/" target="_blank" rel="noopener" aria-label="ShowUp2Move pe YouTube"><span data-icon="youtube"></span></a></li>
+          <li><a href="https://x.com/" target="_blank" rel="noopener" aria-label="ShowUp2Move pe X"><span data-icon="x"></span></a></li>
+        </ul>
+        <p class="footer__tag">#ShowUpToday</p>
+      </div>
+    </div>
+    <div class="container footer__bottom">
+      <p>© <span data-year></span> ShowUp2Move · Proiect PIUG, prototip front-end.</p>
+      <a href="#top">Înapoi sus ↑</a>
+    </div>
+  </footer>
+</body>
+</html>

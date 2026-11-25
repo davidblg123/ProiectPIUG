@@ -1,0 +1,78 @@
+/* ShowUp2Move — design tokens. Dark este tema implicită; light și accentele suprascriu variabilele. */
+:root {
+  --bg: #0E0A18;
+  --bg-2: #130E22;
+  --surface: #18122A;
+  --surface-2: #231A3D;
+  --line: rgba(178, 107, 255, .18);
+  --text: #F2EEFB;
+  --muted: #A89CC4;
+
+  --green: #2EE59D;
+  --lime: #C6F432;
+  --purple: #8B5CF6;
+  --violet: #B26BFF;
+  --plum: #4C1D95;
+  --danger: #FF5C7A;
+
+  --accent: var(--green);
+  --accent-ink: #04140D;
+  --on-color: #0E0A18;
+  --grad: linear-gradient(120deg, var(--green), var(--purple));
+
+  --sport-fotbal: #2EE59D;
+  --sport-baschet: #FF8A4C;
+  --sport-tenis: #C6F432;
+  --sport-volei: #B26BFF;
+  --sport-alergare: #FF5FA2;
+
+  --shadow: 0 12px 32px -14px rgba(0, 0, 0, .65);
+  --glow: 0 0 0 1px var(--line), 0 24px 60px -24px rgba(139, 92, 246, .55);
+
+  --font-display: 'Space Grotesk', system-ui, sans-serif;
+  --font-body: 'Plus Jakarta Sans', system-ui, sans-serif;
+  --font-scale: 1;
+
+  --r-sm: 10px;
+  --r: 18px;
+  --r-lg: 28px;
+  --r-pill: 999px;
+  --nav-h: 68px;
+  --maxw: 1200px;
+  --ease: cubic-bezier(.2, .8, .2, 1);
+
+  color-scheme: dark;
+}
+
+[data-theme="light"] {
+  --bg: #F4F0FA;
+  --bg-2: #EDE6F8;
+  --surface: #FFFFFF;
+  --surface-2: #E9E1F7;
+  --line: rgba(109, 40, 217, .16);
+  --text: #1A1330;
+  --muted: #5E5478;
+
+  --green: #0C9E6A;
+  --lime: #5F8F00;
+  --purple: #6D28D9;
+  --violet: #9333EA;
+  --plum: #3B0F73;
+  --danger: #D92D50;
+  --on-color: #FFFFFF;
+
+  --sport-fotbal: #0C9E6A;
+  --sport-baschet: #D9561A;
+  --sport-tenis: #5F8F00;
+  --sport-volei: #8B2FD9;
+  --sport-alergare: #D61F72;
+
+  --shadow: 0 12px 32px -16px rgba(59, 15, 115, .28);
+  --glow: 0 0 0 1px var(--line), 0 24px 60px -28px rgba(109, 40, 217, .45);
+
+  color-scheme: light;
+}
+
+[data-accent="purple"] { --accent: var(--violet); --accent-ink: #FFFFFF; }
+[data-accent="lime"]   { --accent: var(--lime);   --accent-ink: #141A00; }
+[data-theme="light"][data-accent="lime"] { --accent-ink: #FFFFFF; }

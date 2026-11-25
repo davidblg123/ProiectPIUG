@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="ro" data-theme="dark" data-accent="green">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Galerie Sport și Locații — ShowUp2Move</title>
+  <meta name="description" content="Galerie foto cu sporturi și locații partenere ShowUp2Move.">
+  <meta name="theme-color" content="#0E0A18">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop stop-color='%232EE59D'/%3E%3Cstop offset='1' stop-color='%238B5CF6'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='32' height='32' rx='9' fill='url(%23g)'/%3E%3Cpath d='M8 21l5-5 3 3 7-8' fill='none' stroke='%230E0A18' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3Ccircle cx='23.5' cy='7.5' r='2.4' fill='%230E0A18'/%3E%3C/svg%3E">
+
+  <!-- Google Analytics (gtag.js)
+       Înlocuiește G-XXXXXXXXXX cu Measurement ID-ul real (GA4 → Admin → Data streams → Web),
+       în AMBELE locuri de mai jos, pe toate cele 5 pagini. -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX');
+  </script>
+
+  <!-- Aplică tema salvată înainte de randare (evită „flash”-ul) -->
+  <script>(function(){try{var p=JSON.parse(localStorage.getItem('su2m:prefs'))||{},d=document.documentElement;d.dataset.theme=p.theme||'dark';d.dataset.accent=p.accent||'green';if(p.scale)d.style.setProperty('--font-scale',p.scale);}catch(e){}})();</script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/pages.css">
+
+  <script src="js/core/utils.js" defer></script>
+  <script src="js/core/storage.js" defer></script>
+  <script src="js/core/analytics.js" defer></script>
+  <script src="js/core/data.js" defer></script>
+  <script src="js/core/theme.js" defer></script>
+  <script src="js/core/nav.js" defer></script>
+  <script src="js/core/scroll.js" defer></script>
+  <script src="js/core/help.js" defer></script>
+  <script src="js/core/chatbot.js" defer></script>
+  <script src="js/pages/gallery.js" defer></script>
+  <script src="js/main.js" defer></script>
+</head>
+<body data-page="gallery">
+  <a class="skip-link" href="#main">Sari la conținut</a>
+
+  <header class="nav" id="top">
+    <div class="container nav__inner">
+      <a class="brand" href="index.html" aria-label="ShowUp2Move, pagina de start">
+        <span class="brand__mark" data-icon="logo"></span>
+        <span class="brand__name">ShowUp<b>2</b>Move</span>
+      </a>
+      <nav class="nav__menu" id="nav-menu" aria-label="Navigare principală">
+        <a href="index.html" data-nav="home">Acasă</a>
+        <a href="evenimente.html" data-nav="events">Grupuri &amp; Evenimente</a>
+        <a href="galerie.html" data-nav="gallery">Galerie</a>
+        <a href="componente.html" data-nav="components">Componente &amp; Ghid</a>
+        <a href="contact.html" data-nav="contact">Contact</a>
+      </nav>
+      <div class="nav__tools">
+        <button class="icon-btn theme-btn" type="button" data-action="theme-toggle" aria-label="Comută tema"><span class="ic-sun" data-icon="sun"></span><span class="ic-moon" data-icon="moon"></span></button>
+        <button class="icon-btn" type="button" data-action="prefs-open" aria-label="Personalizare: temă, accent, mărime text" aria-haspopup="dialog"><span data-icon="sliders"></span></button>
+      </div>
+      <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="nav-menu" aria-label="Deschide meniul"><span></span><span></span><span></span></button>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="page-hero">
+      <div class="container">
+        <span class="page-hero__deco" aria-hidden="true">LOOK</span>
+        <span class="eyebrow">Galerie Sport &amp; Locații</span>
+        <h1>Sport, locuri <span class="grad-text">și oameni.</span></h1>
+        <p class="lead">Momente de pe terenurile partenere. Apasă pe orice imagine ca s-o vezi mărită și navighează cu Previous / Next.</p>
+      </div>
+    </section>
+
+    <section class="section--tight" id="galerie">
+      <div class="container">
+        <div class="section__head section__head--split">
+          <div class="chips" id="g-filters" role="group" aria-label="Filtrează imaginile după sport"></div>
+          <p class="muted" id="g-count" aria-live="polite" style="margin:0"></p>
+        </div>
+        <div class="g-grid" id="g-grid"></div>
+      </div>
+    </section>
+
+    <section class="section" id="locatii">
+      <div class="container">
+        <div class="section__head">
+          <span class="eyebrow eyebrow--social">Locații partenere</span>
+          <h2>Unde se joacă.</h2>
+          <p class="lead">Fiecare locație are sporturile disponibile și prețul pe oră. Bugetul pe persoană se calculează automat în grupuri.</p>
+        </div>
+        <div class="loc-grid" id="loc-grid"></div>
+      </div>
+    </section>
+
+    <dialog class="modal lightbox" id="lightbox" aria-label="Imagine mărită">
+      <div class="modal__inner">
+        <div class="lb__stage">
+          <img class="lb__img" id="lb-img" src="" alt="">
+          <button class="lb__nav lb__prev" type="button" id="lb-prev" aria-label="Imaginea anterioară"><span data-icon="prev"></span><span class="lb__label">Previous</span></button>
+          <button class="lb__nav lb__next" type="button" id="lb-next" aria-label="Imaginea următoare"><span class="lb__label">Next</span><span data-icon="next"></span></button>
+          <button class="icon-btn lb__close" type="button" data-close aria-label="Închide galeria"><span data-icon="close"></span></button>
+        </div>
+        <div class="lb__bar">
+          <div><b id="lb-title"></b><br><small id="lb-place"></small></div>
+          <span class="lb__count" id="lb-count" aria-live="polite"></span>
+        </div>
+      </div>
+    </dialog>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__grid">
+      <div class="footer__brand">
+        <a class="brand" href="index.html"><span class="brand__mark" data-icon="logo"></span><span class="brand__name">ShowUp<b>2</b>Move</span></a>
+        <p>Sport spontan cu oameni din apropiere. Răspunzi azi, joci diseară.</p>
+      </div>
+      <nav aria-label="Linkuri în subsol">
+        <h3>Explorează</h3>
+        <ul>
+          <li><a href="index.html">Acasă</a></li>
+          <li><a href="evenimente.html">Grupuri &amp; Evenimente</a></li>
+          <li><a href="galerie.html">Galerie</a></li>
+          <li><a href="componente.html">Componente &amp; Ghid</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+      <div>
+        <h3>Comunitate</h3>
+        <ul class="social">
+          <li><a href="https://www.instagram.com/" target="_blank" rel="noopener" aria-label="ShowUp2Move pe Instagram"><span data-icon="instagram"></span></a></li>
+          <li><a href="https://www.facebook.com/" target="_blank" rel="noopener" aria-label="ShowUp2Move pe Facebook"><span data-icon="facebook"></span></a></li>
+          <li><a href="https://www.tiktok.com/" target="_blank" rel="noopener" aria-label="ShowUp2Move pe TikTok"><span data-icon="tiktok"></span></a></li>
+          <li><a href="https://www.youtube.com/" target="_blank" rel="noopener" aria-label="ShowUp2Move pe YouTube"><span data-icon="youtube"></span></a></li>
+          <li><a href="https://x.com/" target="_blank" rel="noopener" aria-label="ShowUp2Move pe X"><span data-icon="x"></span></a></li>
+        </ul>
+        <p class="footer__tag">#ShowUpToday</p>
+      </div>
+    </div>
+    <div class="container footer__bottom">
+      <p>© <span data-year></span> ShowUp2Move · Proiect PIUG, prototip front-end.</p>
+      <a href="#top">Înapoi sus ↑</a>
+    </div>
+  </footer>
+</body>
+</html>
