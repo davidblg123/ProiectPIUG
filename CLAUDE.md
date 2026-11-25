@@ -81,3 +81,63 @@ Identitate vibrantă **verde + mov**, aspect de produs făcut de o echipă tân�
 12. Personalizare: comutator Light/Dark, culoare de accent și mărime text, salvate în `localStorage`
 13. Google Analytics: snippet `gtag.js` cu `G-XXXXXXXXXX` și un comentariu care arată unde se pune ID-ul real, în `<head>`-ul fiecărei pagini
 14. Bonus: chatbot asistent pe bază de reguli (ShowUpToday, reguli, sporturi, locații, navigare)
+
+## Rezumat pentru prezentare (ce s-a făcut și cum)
+
+**Ce este:** un prototip front-end pentru ShowUp2Move, cu 5 pagini legate între ele: Acasă, Grupuri & Evenimente, Galerie, Componente & Ghid și Contact. Nu are server. Datele sunt simulate (mock), iar ce face utilizatorul se salvează în browser.
+
+**Tehnologii folosite:**
+- **HTML5 semantic**: `header`, `nav`, `main`, `section`, `article`, `footer`, `dialog` pentru ferestrele modale, `details`/`summary` pentru întrebările frecvente, `table` cu `caption`/`th scope`.
+- **CSS3** fără framework:
+  - variabile CSS (custom properties) pentru teme
+  - Flexbox și CSS Grid pentru layout
+  - `clamp()` pentru tipografie fluidă
+  - `color-mix()`, `backdrop-filter`, `scroll-snap`, animații `@keyframes`
+  - media queries mobile-first (640 / 900 / 1200px)
+- **JavaScript vanilla (ES6+)**: arrow functions, template literals, `Set`, destructuring. Codul e organizat în module IIFE care folosesc un singur obiect global, `window.SU2M`. Nu am folosit ES modules, ca proiectul să meargă și la dublu-click pe fișier.
+- **API-uri de browser**:
+  - `localStorage` pentru preferințe, profil, evenimente create și mesaje
+  - `<dialog>` cu `showModal()`, pentru focus și Esc gestionate nativ
+  - `CustomEvent` pentru comunicarea dintre module
+  - `matchMedia` pentru reduced motion și breakpoint-uri
+  - `requestAnimationFrame` pentru animația cifrelor
+- **Servicii externe**: Google Fonts (Space Grotesk, Plus Jakarta Sans), imagini Unsplash, embed YouTube, Google Analytics 4 (`gtag.js`).
+
+**Cum e implementată fiecare cerință (pe scurt):**
+1. *Navbar fix*: `position: fixed`. Linkul activ e ales din `data-page` de pe `<body>`. Pe mobil, meniul hamburger își actualizează `aria-expanded`.
+2. *Căutare*: filtrează la fiecare tastă (evenimentul `input`). Textul se normalizează fără diacritice, deci „sala” găsește „Sală”. Se combină cu filtrele și afișează un mesaj când nu există rezultate.
+3. *Galerie*: grilă asimetrică (`grid-auto-flow: dense`). La click se deschide un lightbox `<dialog>` cu Previous/Next, săgeți ← →, Esc și swipe pe telefon.
+4. *Tabel de componente*: tabel HTML cu căutare și filtru de status. Tabelul de sporturi se generează din date.
+5. *Formular*: validare cu expresii regulate (regex):
+   - nume: doar litere Unicode, cu prenume și nume
+   - email: format `nume@domeniu.tld`
+   - telefon RO: `07xx…` sau `+40…`
+   - mesaj: minim 20 de caractere
+
+   Erorile apar sub fiecare câmp, la părăsirea câmpului și apoi pe măsură ce scrii. La trimitere apare un mesaj de confirmare.
+6. *Video*: `iframe` YouTube responsive (`aspect-ratio: 16/9`).
+7. *Social media*: iconițe SVG în footer și carduri mari în pagina Contact.
+8. *Conținut adaptat*: nivelul (Începător / Intermediar / Avansat) și sportul ales schimbă titlul, sfaturile, imaginea și evenimentele recomandate. Alegerea e salvată.
+9. *Help*: butonul „?” deschide un ghid general, plus sfaturi pentru pagina curentă.
+10. *UP / DOWN*: `window.scrollTo` cu derulare lină. Butoanele se ascund când nu sunt utile.
+11. *Responsive*: abordare mobile-first. Testat la 375 / 768 / 1280px.
+12. *Personalizare*: Dark/Light, accent (verde / mov / lime) și mărimea textului. Totul vine din variabile CSS schimbate prin atribute pe `<html>` și se salvează în `localStorage`. Un script mic din `<head>` aplică tema înainte de afișare, ca pagina să nu clipească.
+13. *Google Analytics*: snippetul `gtag.js` cu `G-XXXXXXXXXX`, plus evenimente proprii: răspuns ShowUpToday, căutare, creare eveniment, trimitere formular, deschidere galerie.
+14. *Chatbot (bonus)*: chatbot pe reguli, fără AI. Caută cuvinte cheie în întrebare și alege răspunsul care se potrivește cel mai bine.
+
+**Logica aplicației (dacă întreabă „cum se formează grupurile”):**
+- Sunt 80 de utilizatori simulați. Disponibilitatea lor e calculată dintr-un generator pseudo-aleator care pornește de la dată și id. Rezultatul e același în toată ziua și diferit în ziua următoare.
+- Pentru fiecare sport, oamenii disponibili sunt sortați: întâi cei din zona aleasă, apoi după scorul de încredere. Apoi sunt împărțiți în grupuri care respectă intervalul sportului (de ex. fotbal 10–14). Ce rămâne sub minim devine un grup „în formare”.
+- **Căpitanul** este membrul cu cel mai mare scor de încredere.
+- **Bugetul** = prețul terenului pe oră × durata ÷ numărul de jucători. De exemplu, 220 lei × 1,5 h ÷ 14 ≈ 24 lei de persoană.
+
+**Accesibilitate:**
+- link „Sari la conținut”
+- `aria-label` pe butoanele care au doar iconiță
+- `aria-live` pentru rezultatele care se schimbă
+- focus vizibil
+- tastatura funcționează peste tot
+- `prefers-reduced-motion` respectat
+- `alt` pe toate imaginile, plus imagine de rezervă dacă una nu se încarcă
+
+**Securitate:** textul introdus de utilizator e „escapat” (`S.esc`) înainte să fie afișat în pagină. Asta previne XSS.
